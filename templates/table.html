@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Оформление каюты</h2>
+    <table border="5">
+        <tr>
+            <td>Цвет стен</td>
+            <td>Эмблема</td>
+        </tr>
+        <tr>
+            {% if sex == 'male' and age >= 21 %}
+                <td><div id="rectangle1"></div></td>
+            {% elif sex == 'male' and 0 <= age < 21 %}
+                <td><div id="rectangle2"></div></td>
+            {% elif sex == 'female' and age >= 21 %}
+                <td><div id="rectangle3"></div></td>
+            {% elif sex == 'female' and 0 <= age < 21 %}
+                <td><div id="rectangle4"></div></td>
+            {% else %}
+                <td>Некорректный возраст или пол</td>
+            {% endif %}
+            {% if age >= 21 %}
+                <td><div><img src='/static/img/mars-adult.png' alt='Марсианин-ребенок'></div></td>
+            {% elif 0 <= age < 21 %}
+                <td><div><img src='/static/img/mars-child.jpg' alt='Взрослый марсианин'></div></td>
+            {% else %}
+                <td>Некорректный возраст</td>
+            {% endif %}
+        </tr>
+    </table>
+{% endblock %}
